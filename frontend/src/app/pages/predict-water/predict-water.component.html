@@ -1,0 +1,155 @@
+<div class="form-container">
+  <h2>Water Prediction Form</h2>
+
+  <form>
+    <div class="form-grid">
+      <label>
+        Date (In the next 14 days):
+        <input type="date" [(ngModel)]="form.date" name="date" />
+      </label>
+
+      <label>
+        Location (City) ex.: "Cairo":
+        <input type="text" [(ngModel)]="form.location" name="location" />
+      </label>
+
+      <label>
+        Crop Type:
+        <select [(ngModel)]="form.crop_type" name="cropType">
+          <option value="">--Select Crop Type--</option>
+          <option value="Olive">Olive</option>
+          <option value="Orange">Orange</option>
+          <option value="Date">Date</option>
+        </select>
+      </label>
+
+      <label>
+        Soil Type:
+        <select [(ngModel)]="form.soil_type" name="soilType">
+          <option value="">--Select Soil Type--</option>
+          <option value="Loamy">Loamy</option>
+          <option value="Sandy">Sandy</option>
+          <option value="Clay">Clay</option>
+        </select>
+      </label>
+
+      <label>
+        Time Season:
+        <select [(ngModel)]="form.season" name="season">
+          <option value="">--Select Season--</option>
+          <option value="Initial">Initial</option>
+          <option value="Mid-season">Mid-season</option>
+          <option value="Late-season">Late-season</option>
+        </select>
+      </label>
+
+      <label>
+        Area (m²):
+        <input type="number" [(ngModel)]="form.area" name="area" />
+      </label>
+
+      <label>
+        Initial Soil Moisture Level (Liter/m²):
+        <input
+          type="number"
+          [(ngModel)]="form.initial_moisture"
+          name="initialMoisture"
+        />
+      </label>
+
+      <label>
+        Max Soil Moisture Level (Liter/m²):
+        <input
+          type="number"
+          [(ngModel)]="form.max_moisture"
+          name="maxMoisture"
+        />
+      </label>
+    </div>
+
+    <div class="error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <div class="button-group">
+      <div class="model-button">
+        <ng-container *ngIf="!modelsLoading['DNN']; else dnnSpinner">
+          <button (click)="runModel('DNN')">Deep Neural Network</button>
+          <p *ngIf="results.DNN">{{ results.DNN }} Liters</p>
+          <p *ngIf="results.DNN_accuracy">{{ results.DNN_accuracy }} %</p>
+        </ng-container>
+        <ng-template #dnnSpinner>
+          <div class="spinner"></div>
+        </ng-template>
+      </div>
+
+      <div class="model-button">
+        <ng-container *ngIf="!modelsLoading['DT']; else dtSpinner">
+          <button (click)="runModel('DT')">Decision Tree</button>
+          <p *ngIf="results.DT">{{ results.DT }} Liters</p>
+          <p *ngIf="results.DT_accuracy">{{ results.DT_accuracy }} %</p>
+        </ng-container>
+        <ng-template #dtSpinner>
+          <div class="spinner"></div>
+        </ng-template>
+      </div>
+
+      <div class="model-button">
+        <ng-container *ngIf="!modelsLoading['RF']; else rfSpinner">
+          <button (click)="runModel('RF')">Random Forest</button>
+          <p *ngIf="results.RF">{{ results.RF }} Liters</p>
+          <p *ngIf="results.RF_accuracy">{{ results.RF_accuracy }} %</p>
+        </ng-container>
+        <ng-template #rfSpinner>
+          <div class="spinner"></div>
+        </ng-template>
+      </div>
+
+      <div class="model-button">
+        <ng-container *ngIf="!modelsLoading['SARIMAX']; else sarimaxSpinner">
+          <button (click)="runModel('SARIMAX')">SARIMAX</button>
+          <p *ngIf="results.SARIMAX">{{ results.SARIMAX }} Liters</p>
+          <p *ngIf="results.SARIMAX_accuracy">
+            {{ results.SARIMAX_accuracy }} %
+          </p>
+        </ng-container>
+        <ng-template #sarimaxSpinner>
+          <div class="spinner"></div>
+        </ng-template>
+      </div>
+
+      <div class="model-button">
+        <ng-container *ngIf="!modelsLoading['SVM']; else svmSpinner">
+          <button (click)="runModel('SVM')">SVM</button>
+          <p *ngIf="results.SVM">{{ results.SVM }} Liters</p>
+          <p *ngIf="results.SVM_accuracy">{{ results.SVM_accuracy }} %</p>
+        </ng-container>
+        <ng-template #svmSpinner>
+          <div class="spinner"></div>
+        </ng-template>
+      </div>
+
+      <div class="model-button">
+        <ng-container *ngIf="!modelsLoading['XGBoost']; else xgboostSpinner">
+          <button (click)="runModel('XGBoost')">XGBoost</button>
+          <p *ngIf="results.XGBoost">{{ results.XGBoost }} Liters</p>
+          <p *ngIf="results.XGBoost_accuracy">
+            {{ results.XGBoost_accuracy }} %
+          </p>
+        </ng-container>
+        <ng-template #xgboostSpinner>
+          <div class="spinner"></div>
+        </ng-template>
+      </div>
+        <div class="model-button">
+          <ng-container *ngIf="!modelsLoading['actual']; else actualSpinner">
+            <button (click)="runModel('actual')">Actual Result</button>
+            <p *ngIf="results.actual">{{ results.actual }} Liters</p>
+          </ng-container>
+          <ng-template #actualSpinner>
+            <div class="spinner"></div>
+          </ng-template>
+        </div>
+    </div>
+  </form>
+</div>

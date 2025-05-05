@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+$color-dark: #3A0519
+$color-mid: #4b6b84
+$color-light: #94b7c3
+$color-bg: #F5EEDD
+$color-white: #ffffff
+
+body, html
+  margin: 0
+  padding: 0
+  font-family: 'Segoe UI', sans-serif
+  background-color: $color-bg
+  color: $color-dark
+  min-height: 100vh
+
+.app-wrapper
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+.app-header
+  background-color: $color-dark
+  color: $color-white
+  text-align: center
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2)
+
+.app-main
+  flex: 1
+
+.app-footer
+  background-color: $color-mid
+  color: $color-white
+  text-align: center
+  padding: 1rem
+  font-size: 0.9rem

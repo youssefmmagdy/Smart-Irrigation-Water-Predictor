@@ -1,0 +1,13 @@
+fastapi[standard]
+numpy
+requests
+joblib
+uvicorn
+pydantic
+python-dotenv
+scikit-learn
+xgboost
+tensorflow==2.19.0
+pymongo
+matplotlib
+pandas
