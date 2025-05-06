@@ -45,28 +45,27 @@ def read_root():
 
 @app.post("/load/{model_id}")
 def load_model(model_id: str):
-    return {"message": model_id + " model loaded"}
-    # model_id = model_id.lower()
-    # if model_id == "dnn":
-    #     dnn_service.load()
-    #     return {"model": "DNN model loaded"}
-    # elif model_id == "dt":
-    #     dt_service.load()
-    #     return {"model": "DT model loaded"}
-    # elif model_id == "rf":
-    #     rf_service.load()
-    #     return {"model": "RF model loaded"}
-    # elif model_id == "xgboost":
-    #     xgboost_service.load()
-    #     return {"model": "XGBoost model loaded"}
-    # elif model_id == "sarimax":
-    #     sarimax_service.load()
-    #     return {"model": "SARIMAX model loaded"}
-    # elif model_id == "svm":
-    #     svm_service.load()
-    #     return {"model": "SVM model loaded"}
-    # else:
-    #     return {"error": f"Model '{model_id}' is not supported"}
+    model_id = model_id.lower()
+    if model_id == "dnn":
+        dnn_service.load()
+        return {"model": "DNN model loaded"}
+    elif model_id == "dt":
+        dt_service.load()
+        return {"model": "DT model loaded"}
+    elif model_id == "rf":
+        rf_service.load()
+        return {"model": "RF model loaded"}
+    elif model_id == "xgboost":
+        xgboost_service.load()
+        return {"model": "XGBoost model loaded"}
+    elif model_id == "sarimax":
+        sarimax_service.load()
+        return {"model": "SARIMAX model loaded"}
+    elif model_id == "svm":
+        svm_service.load()
+        return {"model": "SVM model loaded"}
+    else:
+        return {"error": f"Model '{model_id}' is not supported"}
 
 
 @app.post("/predict/{model_id}")
