@@ -4,6 +4,12 @@ A machine learning-powered web application that predicts **Evapotranspiration (E
 
 ---
 
+## 📷 Screenshots
+
+![Frontend_Sample](https://github.com/user-attachments/assets/7336bc63-6416-4f74-85ea-7766da25415c)
+
+---
+
 ## 🚀 Overview
 
 The Smart Irrigation Simulator helps farmers and agricultural professionals optimize water usage by:
@@ -158,11 +164,7 @@ MONGODB_URI=mongodb+srv://youssefmmagdy55:zuIIE8LATtxn9u4u@cluster0.xq6ult7.mong
 
 ---
 
-## 📷 Screenshots
 
-![Frontend_Sample](https://github.com/user-attachments/assets/7336bc63-6416-4f74-85ea-7766da25415c)
-
----
 
 ## 🔮 Future Improvements
 
