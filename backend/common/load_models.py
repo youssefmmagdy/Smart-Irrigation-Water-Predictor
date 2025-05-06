@@ -12,7 +12,9 @@ import requests
 
 load_dotenv()
 # Connect to MongoDB
-client = MongoClient(os.getenv('MONGODB_URI'))
+client = MongoClient(os.getenv('MONGODB_URI'),
+    tls=True,
+    tlsAllowInvalidCertificates=True)
 db = client['Bachelor']
 
 # GridFS for storing large files (models)
@@ -78,6 +80,6 @@ def load_dnn_model():
 
 
 # model = load_keras_model('DNN')
-# model = load_dt_model()
-# print(type(model))
+model = load_sarimax_model()
+print(type(model))
 
