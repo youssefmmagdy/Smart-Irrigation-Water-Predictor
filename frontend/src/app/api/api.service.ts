@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:8000';
+  BACKEND_PORT_NUMBER = parseInt((<any>import.meta).env['BACKEND_PORT_Number'] || '8000', 10);
+  private baseUrl = `http://localhost:${this.BACKEND_PORT_NUMBER}`; // Adjust the URL as needed
 
   constructor(private http: HttpClient) {}
 

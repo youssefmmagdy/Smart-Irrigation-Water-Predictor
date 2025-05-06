@@ -20,6 +20,11 @@ db = client['Bachelor']
 # GridFS for storing large files (models)
 fs = gridfs.GridFS(db)
 
+print("Available files in GridFS:")
+for f in fs.find():
+    print(f.filename)
+
+
 def load_model_from_mongodb(model_name):
     # Find the file by filename
     file = fs.find_one({'filename': model_name})
@@ -51,6 +56,8 @@ def load_keras_model(model_name):
 def load_sklearn_model_from_mongodb(model_name):
     print(f"hey Loading '{model_name}'...")
     file = fs.find_one({'filename': model_name})
+    if not file:
+        raise HTTPException(status_code=404, detail=f"Model '{model_name}' not found in MongoDB.")
     model_data = file.read()
     model = joblib.load(io.BytesIO(model_data))
     print(f"hey '{model_name}' loaded successfully.")
