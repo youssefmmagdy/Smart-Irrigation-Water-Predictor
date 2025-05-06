@@ -80,6 +80,6 @@ def load_dnn_model():
 
 
 # model = load_keras_model('DNN')
-model = load_sarimax_model()
-print(type(model))
+# model = load_sarimax_model()
+# print(type(model))
 

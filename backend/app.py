@@ -39,6 +39,10 @@ def get_all_models():
         ]
     }
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 @app.post("/load/{model_id}")
 def load_model(model_id: str):
     model_id = model_id.lower()
