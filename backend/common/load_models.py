@@ -15,6 +15,7 @@ load_dotenv()
 client = MongoClient(os.getenv('MONGODB_URI'),
     tls=True,
     tlsAllowInvalidCertificates=True)
+print(client.list_database_names())
 db = client['Bachelor']
 
 # GridFS for storing large files (models)
@@ -23,7 +24,7 @@ fs = gridfs.GridFS(db)
 print("Available files in GridFS:")
 for f in fs.find():
     print(f.filename)
-
+print("Finished listing files in GridFS.")
 
 def load_model_from_mongodb(model_name):
     # Find the file by filename
