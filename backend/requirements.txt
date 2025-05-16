@@ -1,14 +1,11 @@
 fastapi[standard]
 uvicorn
 numpy
-pandas
-matplotlib
 scikit-learn
 xgboost
 tensorflow==2.19.0
 joblib
 requests
 pydantic
-python-dotenv
 pymongo
 statsmodels

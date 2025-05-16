@@ -1,15 +1,12 @@
 import requests
 import numpy as np
 import requests
-import os
-from dotenv import load_dotenv
 
 
 
 
-load_dotenv()
-Weather_API_KEY = os.getenv("WEATHER_API_KEY")
-BASE_URL = os.getenv("FUTURE_WEATHER_URL")
+Weather_API_KEY = "007f8f538a464794a8f115446250803"
+BASE_URL = "http://api.worldweatheronline.com/premium/v1/weather.ashx"
 
 def get_future_data(city, date):
 
