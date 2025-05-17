@@ -6,9 +6,9 @@ A machine learning-powered web application that predicts **Evapotranspiration (E
 
 ## 🔗 Quick Links
 
-- 📄 [Bachelor Thesis (PDF)](https://github.com/youssefmmagdy/Bachelor_Thesis_GIU_Berlin.pdf)
+- 📄 [Bachelor Thesis (PDF)](https://github.com/youssefmmagdy/Smart-Irrigation-Water-Predictor/blob/main/Bachelor_Thesis_GIU_Berlin.pdf)
 - 🌐 [Live Demo Website](https://smart-irrigation-water-predictor.vercel.app/predict-water)
-- 🧠 [ML Model Training Notebooks](https://github.com/youssefmmagdy/Final_Trainings.ipynb)
+- 🧠 [ML Model Training Notebooks](https://github.com/youssefmmagdy/Smart-Irrigation-Water-Predictor/blob/main/Final_Trainings.ipynb)
 
 ---
 
