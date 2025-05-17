@@ -37,7 +37,7 @@ The Smart Irrigation Simulator helps farmers and agricultural professionals opti
 ## 🛠️ Tech Stack
 
 - **Frontend**: Angular  
-- **Backend**: FastAPI (Python)  
+- **Backend**: Flask (Python)  
 - **Machine Learning**: Scikit-learn, TensorFlow, XGBoost, Prophet  
 - **Database**: MongoDB  
 - **Deployment**: Docker-ready (Render, Railway, Fly.io)  
@@ -130,7 +130,7 @@ git clone https://github.com/youssefmmagdy/smart-irrigation-simulator.git
 cd smart-irrigation-simulator
 ```
 
-### 🧪 2. Backend Setup (FastAPI)
+### 🧪 2. Backend Setup (Flask)
 
 ```bash
 cd backend
