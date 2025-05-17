@@ -4,13 +4,19 @@ A machine learning-powered web application that predicts **Evapotranspiration (E
 
 ---
 
+## 🔗 Quick Links
+
+- 📄 [Bachelor Thesis (PDF)](https://github.com/youssefmmagdy/Bachelor_Thesis_GIU_Berlin.pdf)
+- 🌐 [Live Demo Website](https://smart-irrigation-water-predictor.vercel.app/predict-water)
+- 🧠 [ML Model Training Notebooks](https://github.com/youssefmmagdy/Final_Trainings.ipynb)
+
+---
 
 ## 📷 Screenshots
 
 ![Frontend_Sample](https://github.com/user-attachments/assets/7336bc63-6416-4f74-85ea-7766da25415c)
 
 ---
-
 
 ## 🚀 Overview
 
@@ -103,6 +109,7 @@ The Smart Irrigation Simulator helps farmers and agricultural professionals opti
   "initial_moisture": 20,
   "max_moisture": 35
 }
+
 ```
 
 ---
