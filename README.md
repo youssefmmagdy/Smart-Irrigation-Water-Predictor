@@ -143,7 +143,7 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
-uvicorn app:app --reload
+uvicorn api.app:app --reload
 ```
 
 ### 🌐 3. Frontend Setup (Angular)
