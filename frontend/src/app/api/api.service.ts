@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   
-  private baseUrl ='https://flask-hello-world-6u04.onrender.com';
+  private baseUrl ='https://smart-irrigation-water-predictor.onrender.com';
 
   constructor(private http: HttpClient) {}
 
