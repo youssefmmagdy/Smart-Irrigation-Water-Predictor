@@ -105,15 +105,19 @@
         </ng-template>
       </div>
 
-      <div class="model-button">
-        <ng-container *ngIf="!modelsLoading['SARIMAX']; else sarimaxSpinner">
-          <button (click)="runModel('SARIMAX')">SARIMAX</button>
+      <div class="sarimax-button">
+        <ng-container>
+          <button 
+        disabled 
+        title="SARIMAX model is currently unavailable, it's 400MB, which is not available in free plan."
+          >
+        SARIMAX
+          </button>
           <p *ngIf="results.SARIMAX">{{ results.SARIMAX }} Liters</p>
-          <p *ngIf="results.SARIMAX_accuracy">{{ results.SARIMAX_accuracy }} %</p>
+          <p *ngIf="results.SARIMAX_accuracy">
+        {{ results.SARIMAX_accuracy }} %
+          </p>
         </ng-container>
-        <ng-template #sarimaxSpinner>
-          <div class="spinner"></div>
-        </ng-template>
       </div>
 
       <div class="model-button">
