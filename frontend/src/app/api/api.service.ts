@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   
-  private baseUrl = parseInt((<any>import.meta).env['ANGULAR_APP_BACKEND_URL'] || 'https://smart-irrigation-water-predictor-production.up.railway.app/', 10);
+  private baseUrl ='https://flask-hello-world-6u04.onrender.com';
 
   constructor(private http: HttpClient) {}
 

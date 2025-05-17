@@ -1,11 +1,12 @@
-fastapi[standard]
-uvicorn
+Flask==3.0.3
+flask_cors
 numpy
+gunicorn
 scikit-learn
-xgboost
 tensorflow==2.19.0
 joblib
 requests
 pydantic
+xgboost
 pymongo
 statsmodels

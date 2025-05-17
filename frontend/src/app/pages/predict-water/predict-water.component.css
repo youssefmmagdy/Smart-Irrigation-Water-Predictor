@@ -1,0 +1,127 @@
+.form-container {
+  max-width: 70vw;
+  min-height: 82vh;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #06202B;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #06202B;
+}
+
+.form-grid label input {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #077A7D;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #06202B;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.sarimax-button button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: rgba(7, 122, 125, 0.5); /* Darker opacity */
+  color: #ffffff;
+  width: 130px;
+  height: 60px;
+  opacity: 0.3; /* Reduced opacity */
+}
+
+.sarimax-button button:hover {
+  cursor: not-allowed; /* Unclickable */
+}
+
+.button-group button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: #077A7D;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 130px;
+  height: 60px;
+}
+
+.button-group button:hover {
+  background: #06202B;
+}
+
+.button-group .actual-btn {
+  background: #06202B;
+}
+
+.button-group .actual-btn:hover {
+  background: #06202B;
+}
+
+.form-grid label select {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #077A7D;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #06202B;
+}
+
+.spinner {
+  width: 130px;
+  height: 50px;
+  border: 2px solid #ccc;
+  border-top-color: #213448;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.model-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.model-button p {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  color: #06202B;
+}

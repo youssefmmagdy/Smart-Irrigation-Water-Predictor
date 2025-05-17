@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.sass'
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [
+    RouterOutlet, // For routing
+    NgSwitch, NgSwitchCase, NgSwitchDefault, // For ngSwitch directives
+  ],
 })
 export class AppComponent {
-  title = 'Bachelor';
+  title = 'angular-test';
+  selection = { value: '' }; // Initialize selection to avoid undefined errors
 }

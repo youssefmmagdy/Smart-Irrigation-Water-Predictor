@@ -10,7 +10,8 @@ import { ApiService } from '../../api/api.service';
   standalone: true,
   imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './predict-water.component.html',
-  styleUrls: ['./predict-water.component.sass'],
+  template: `<h1>Predict Water Works!</h1>`,
+  styleUrls: ['./predict-water.component.css'],
 })
 export class PredictWaterComponent implements OnInit {
   triedSubmit = false;
@@ -28,7 +29,9 @@ export class PredictWaterComponent implements OnInit {
   };
 
   form = {
-    date: '2025-05-05',
+    date: new Date(new Date().setDate(new Date().getDate() + 1))
+      .toISOString()
+      .split('T')[0], // Sets the date to tomorrow in 'YYYY-MM-DD' format
     location: 'Cairo',
     crop_type: 'Olive',
     soil_type: 'Clay',
