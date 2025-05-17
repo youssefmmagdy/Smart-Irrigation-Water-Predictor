@@ -121,7 +121,7 @@ export class PredictWaterComponent implements OnInit {
       return;
     }
     this.modelsLoading[model] = true;
-    this.errorMessage = null;
+    this.errorMessage = "Sometimes it takes maybe 4 minutes to load the model, please be patient";
 
     // Optional: set a local loading flag if desired
     this.api.predict(model.toLowerCase(), this.form).subscribe({
