@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from '../../api/api.service';
+import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-predict-water',
@@ -29,16 +30,14 @@ export class PredictWaterComponent implements OnInit {
   };
 
   form = {
-    date: new Date(new Date().setDate(new Date().getDate() + 1))
-      .toISOString()
-      .split('T')[0], // Sets the date to tomorrow in 'YYYY-MM-DD' format
-    location: 'Cairo',
-    crop_type: 'Olive',
-    soil_type: 'Clay',
-    season: 'Mid-season',
-    area: 1000,
-    initial_moisture: 10,
-    max_moisture: 20,
+    date: '', // Sets the date to tomorrow in 'YYYY-MM-DD' format
+    location: '',
+    crop_type: '',
+    soil_type: '',
+    season: '',
+    area: 0,
+    initial_moisture: 0,
+    max_moisture: 0,
   };
 
   results: {
