@@ -95,7 +95,7 @@ def predict(model_id):
             return jsonify({"amount": None})
         return jsonify({"amount": float(x)})
     elif model_id == "actual":
-        x = ActualResultService().get_actual_result(data)
+        x = ActualResultService().compute(data)
         if x is None:
             return jsonify({"amount": None})
         return jsonify({"amount": float(x)})
