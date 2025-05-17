@@ -105,10 +105,12 @@
         </ng-template>
       </div>
 
-      <div class="model-button">
+      <div class="sarimax-button">
         <ng-container>
           <button 
-        >
+        disabled 
+        title="SARIMAX model is currently unavailable, it's 400MB, which is not available in free plan."
+          >
         SARIMAX
           </button>
           <p *ngIf="results.SARIMAX">{{ results.SARIMAX }} Liters</p>
