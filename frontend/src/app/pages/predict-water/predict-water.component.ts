@@ -103,12 +103,12 @@ export class PredictWaterComponent implements OnInit {
   }
 
   runModel(model: string) {
-    this.modelsLoading[model] = true;
     this.triedSubmit = true;
     if (!this.isValid()) {
       this.errorMessage = 'Please fill in all fields correctly.';
       return;
     }
+    this.modelsLoading[model] = true;
     this.errorMessage = null;
 
     // Optional: set a local loading flag if desired
