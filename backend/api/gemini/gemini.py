@@ -33,4 +33,3 @@ def ask_gemini(input_query):
     response = query_engine.query(input_query)
     return response.response
 
-print(ask_gemini("What is the outline of the thesis?"))
