@@ -105,7 +105,7 @@ def predict(model_id):
         return jsonify({"error": f"Model '{model_id}' is not supported"}), 400
     
 @app.route("/predict/ask-ollama", methods=["POST"])
-def ask_ollama():
+def ask_ollama_route():
     data = request.get_json()
     input_query = data['query']
     
