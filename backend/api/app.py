@@ -7,6 +7,8 @@ from api.services.model_xgboost import XGBoostModelService
 from api.services.model_sarimax import SARIMAXModelService
 from api.services.model_svm import SVMModelService
 from api.services.actual_result import ActualResultService
+from api.ollama.ollama import ask_ollama
+from flask import Response
 
 app = Flask(__name__)
 CORS(app)
@@ -102,3 +104,17 @@ def predict(model_id):
     else:
         return jsonify({"error": f"Model '{model_id}' is not supported"}), 400
     
+@app.route("/predict/ask-ollama", methods=["POST"])
+def ask_ollama():
+    data = request.get_json()
+    input_query = data.get("query")
+    
+    if not input_query:
+        return jsonify({"error": "No query provided"}), 400
+    
+    # Call the ollama function here
+    def generate():
+        for chunk in ask_ollama(input_query):
+            yield chunk
+
+    return Response(generate(), mimetype='text/plain')

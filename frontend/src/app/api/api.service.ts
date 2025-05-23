@@ -20,4 +20,8 @@ export class ApiService {
   predict(modelId: string, data: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/predict/${modelId}`, data);
   }
+
+  askOllama(question: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ask-ollama`, { question });
+  }
 }

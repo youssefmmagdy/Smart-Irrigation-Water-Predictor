@@ -11,3 +11,5 @@ pydantic
 xgboost
 pymongo
 statsmodels
+ollama
+pickle
