@@ -1,5 +1,6 @@
 import ollama
 import pickle
+import subprocess
 
 with open('api/vector_db/vector_db.pkl', 'rb') as f:
     VECTOR_DB = pickle.load(f)
@@ -49,3 +50,8 @@ def ask_ollama(input_query):
 
     for chunk in stream:
         yield chunk['message']['content']
+
+class SetupRunner:
+    def run_setup(self):
+        # Run the setup.bash script
+        subprocess.run(['bash', 'setup.bash'], check=True)

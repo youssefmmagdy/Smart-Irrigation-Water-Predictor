@@ -10,6 +10,7 @@ from api.services.actual_result import ActualResultService
 from api.ollama.ollama import ask_ollama
 from api.gemini.gemini import ask_gemini
 from flask import Response
+from api.ollama.ollama import SetupRunner
 
 app = Flask(__name__)
 CORS(app)
@@ -132,3 +133,5 @@ def ask_gemini_route():
     
     return jsonify({"response": response})
 
+
+SetupRunner().run_setup()

@@ -6,14 +6,10 @@ import joblib
 from pymongo import MongoClient
 import gridfs
 import os
-from dotenv import load_dotenv
 import requests
 
-load_dotenv()
-MONGODB_URI = os.getenv('MONGODB_URI')
-print(f"hey MONGODB_URI: {MONGODB_URI}")
 # Connect to MongoDB
-client = MongoClient(MONGODB_URI,
+client = MongoClient("mongodb+srv://youssefmmagdy55:zuIIE8LATtxn9u4u@cluster0.xq6ult7.mongodb.net/<dbname>?retryWrites=true&w=majority&tls=true&tlsAllowInvalidCertificates=true",
     tls=True,
     tlsAllowInvalidCertificates=True)
 print(client.list_database_names())
