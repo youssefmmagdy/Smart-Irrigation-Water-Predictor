@@ -107,7 +107,7 @@ def predict(model_id):
 @app.route("/predict/ask-ollama", methods=["POST"])
 def ask_ollama():
     data = request.get_json()
-    input_query = data.get("query")
+    input_query = data['query']
     
     if not input_query:
         return jsonify({"error": "No query provided"}), 400
@@ -118,3 +118,6 @@ def ask_ollama():
             yield chunk
 
     return Response(generate(), mimetype='text/plain')
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
