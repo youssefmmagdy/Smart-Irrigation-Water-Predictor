@@ -11,7 +11,7 @@ from llama_index.core.node_parser import SentenceSplitter
 load_dotenv()
 google_api_key = os.getenv("GOOGLE_API_KEY")
 
-documents = SimpleDirectoryReader('./data').load_data()
+documents = SimpleDirectoryReader('api/data').load_data()
 model = Gemini(model='gemini-2.0-flash-001', api_key=google_api_key)
 model_embedding = GeminiEmbedding(model_name='embedding-001')
 
