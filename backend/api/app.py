@@ -8,6 +8,7 @@ from api.services.model_sarimax import SARIMAXModelService
 from api.services.model_svm import SVMModelService
 from api.services.actual_result import ActualResultService
 from api.ollama.ollama import ask_ollama
+from api.gemini.gemini import ask_gemini
 from flask import Response
 
 app = Flask(__name__)
@@ -119,5 +120,15 @@ def ask_ollama_route():
 
     return Response(generate(), mimetype='text/plain')
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+def ask_gemini_route():
+    data = request.get_json()
+    input_query = data['query']
+    
+    if not input_query:
+        return jsonify({"error": "No query provided"}), 400
+    
+    # Call the gemini function here
+    response = ask_gemini(input_query)
+    
+    return jsonify({"response": response})
+
