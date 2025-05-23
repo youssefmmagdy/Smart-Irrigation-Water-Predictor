@@ -24,6 +24,7 @@ In the face of increasing water scarcity and the growing global demand for food,
 Contents
 Acknowledgments in page V
 Abstract in page VII
+
 1 Introduction in page 1
 1.1 Water Scarcity and Importance of Irrigation in page 1  1.2 Limitations of Traditional Methods in page 1  1.3 AI/ML in Agriculture in page 1  1.4 ML for ET Prediction and Smart Irrigation in page 2  1.5 Project-Specific Details in page 2  1.6 Project Aims and Contributions in page 2
 

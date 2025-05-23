@@ -14,5 +14,5 @@ statsmodels
 ollama
 llama-index
 python-dotenv
-llama-index-llms-gemini
+llama-index-llms-google-genai
 llama-index-embeddings-google-genai
