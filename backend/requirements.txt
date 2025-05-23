@@ -15,4 +15,4 @@ ollama
 llama-index
 python-dotenv
 llama-index-llms-gemini
-llama-index-embeddings-gemini
+llama-index-embeddings-google-genai

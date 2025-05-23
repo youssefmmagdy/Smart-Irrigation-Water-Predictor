@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 import requests
 
 load_dotenv()
-MONGODB_URI = os.getenv('MOGODB_URI')
+MONGODB_URI = os.getenv('MONGODB_URI')
 print(f"hey MONGODB_URI: {MONGODB_URI}")
 # Connect to MongoDB
 client = MongoClient(MONGODB_URI,

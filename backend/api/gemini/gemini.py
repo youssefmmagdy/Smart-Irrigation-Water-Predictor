@@ -4,16 +4,16 @@ from llama_index.core import SimpleDirectoryReader
 from llama_index.core import VectorStoreIndex
 from llama_index.llms.gemini import Gemini
 
-from llama_index.embeddings.gemini import GeminiEmbedding 
+from llama_index.embeddings.google_genai import GoogleGenAIEmbedding
 from llama_index.core import Settings
 from llama_index.core.node_parser import SentenceSplitter
 
 load_dotenv()
 google_api_key = os.getenv("GOOGLE_API_KEY")
 
-documents = SimpleDirectoryReader('api/data').load_data()
-model = Gemini(model='gemini-2.0-flash-001', api_key=google_api_key)
-model_embedding = GeminiEmbedding(model_name='embedding-001')
+documents = SimpleDirectoryReader('./data').load_data()
+model = Gemini(model='gemini-2.5-flash-preview-05-20', api_key=google_api_key)
+model_embedding = GoogleGenAIEmbedding(model_name='text-embedding-004')
 
 Settings.llm = model
 Settings.embed_model = model_embedding
@@ -32,3 +32,5 @@ query_engine = index.as_query_engine()
 def ask_gemini(input_query):
     response = query_engine.query(input_query)
     return response.response
+
+print(ask_gemini("Who is the author of the thesis?"))
