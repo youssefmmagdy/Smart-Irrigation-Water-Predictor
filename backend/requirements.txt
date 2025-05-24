@@ -11,7 +11,6 @@ pydantic
 xgboost
 pymongo
 statsmodels
-ollama
 llama-index
 python-dotenv
 llama-index-llms-google-genai

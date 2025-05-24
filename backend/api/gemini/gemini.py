@@ -11,7 +11,7 @@ from llama_index.core.node_parser import SentenceSplitter
 load_dotenv()
 google_api_key = os.getenv("GOOGLE_API_KEY")
 
-documents = SimpleDirectoryReader('api/data').load_data()
+documents = SimpleDirectoryReader('./data').load_data()
 model = GoogleGenAI(model='gemini-2.5-flash-preview-05-20', api_key=google_api_key)
 model_embedding = GoogleGenAIEmbedding(model_name='text-embedding-004')
 
@@ -27,6 +27,7 @@ index = VectorStoreIndex.from_documents(
         embed_model=model_embedding,
         transformations=[Settings.node_parser]
 )
+
 query_engine = index.as_query_engine()
 
 def ask_gemini(input_query):

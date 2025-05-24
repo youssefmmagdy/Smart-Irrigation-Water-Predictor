@@ -7,10 +7,8 @@ from api.services.model_xgboost import XGBoostModelService
 from api.services.model_sarimax import SARIMAXModelService
 from api.services.model_svm import SVMModelService
 from api.services.actual_result import ActualResultService
-from api.ollama.ollama import ask_ollama
-from api.gemini.gemini import ask_gemini
+from gemini.gemini import ask_gemini
 from flask import Response
-from api.ollama.ollama import SetupRunner
 
 app = Flask(__name__)
 CORS(app)
@@ -106,21 +104,7 @@ def predict(model_id):
     else:
         return jsonify({"error": f"Model '{model_id}' is not supported"}), 400
     
-@app.route("/predict/ask-ollama", methods=["POST"])
-def ask_ollama_route():
-    data = request.get_json()
-    input_query = data['query']
-    
-    if not input_query:
-        return jsonify({"error": "No query provided"}), 400
-    
-    # Call the ollama function here
-    def generate():
-        for chunk in ask_ollama(input_query):
-            yield chunk
-
-    return Response(generate(), mimetype='text/plain')
-
+@app.route("/predict/ask-gemini", methods=["POST"])
 def ask_gemini_route():
     data = request.get_json()
     input_query = data['query']
@@ -133,5 +117,3 @@ def ask_gemini_route():
     
     return jsonify({"response": response})
 
-
-SetupRunner().run_setup()
