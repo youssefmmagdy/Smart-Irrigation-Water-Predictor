@@ -161,18 +161,6 @@ npm install
 ng serve
 ```
 
-### 🔑 4. Environment Variables
-
-Create a `.env` file beside your `backend/` and ``frontend/` directories:
-
-```env
-WEATHER_API_KEY=007f8f538a464794a8f115446250803
-FUTURE_WEATHER_URL=http://api.worldweatheronline.com/premium/v1/weather.ashx
-MONGODB_URI=mongodb+srv://youssefmmagdy55:zuIIE8LATtxn9u4u@cluster0.xq6ult7.mongodb.net/
-```
-
----
-
 
 
 ## 🔮 Future Improvements
