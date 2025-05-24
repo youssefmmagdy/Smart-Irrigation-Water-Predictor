@@ -7,7 +7,7 @@ from api.services.model_xgboost import XGBoostModelService
 from api.services.model_sarimax import SARIMAXModelService
 from api.services.model_svm import SVMModelService
 from api.services.actual_result import ActualResultService
-from gemini.gemini import ask_gemini
+from api.gemini.gemini import ask_gemini
 from flask import Response
 
 app = Flask(__name__)
