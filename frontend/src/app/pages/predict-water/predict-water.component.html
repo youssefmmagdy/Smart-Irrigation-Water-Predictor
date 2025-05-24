@@ -1,157 +1,225 @@
-<div class="form-container">
-  <h2>Water Prediction Form</h2>
+<div>
+  <div class="form-container">
+    <h2>Water Prediction Form</h2>
 
-  <form>
-    <div class="form-grid">
-      <label>
-        Date (In the next 12 days):
-        <input type="date" [(ngModel)]="form.date" name="date" />
-      </label>
+    <form>
+      <div class="form-grid">
+        <label>
+          Date (In the next 12 days):
+          <input type="date" [(ngModel)]="form.date" name="date" />
+        </label>
 
-      <label>
-        Location (City) ex.: "Cairo":
-        <input type="text" [(ngModel)]="form.location" name="location" />
-      </label>
+        <label>
+          Location (City) ex.: "Cairo":
+          <input type="text" [(ngModel)]="form.location" name="location" />
+        </label>
 
-      <label>
-        Crop Type:
-        <select [(ngModel)]="form.crop_type" name="cropType">
-          <option value="">--Select Crop Type--</option>
-          <option value="Olive">Olive</option>
-          <option value="Orange">Orange</option>
-          <option value="Date">Date</option>
-        </select>
-      </label>
+        <label>
+          Crop Type:
+          <select [(ngModel)]="form.crop_type" name="cropType">
+            <option value="">--Select Crop Type--</option>
+            <option value="Olive">Olive</option>
+            <option value="Orange">Orange</option>
+            <option value="Date">Date</option>
+          </select>
+        </label>
 
-      <label>
-        Soil Type:
-        <select [(ngModel)]="form.soil_type" name="soilType">
-          <option value="">--Select Soil Type--</option>
-          <option value="Loamy">Loamy</option>
-          <option value="Sandy">Sandy</option>
-          <option value="Clay">Clay</option>
-        </select>
-      </label>
+        <label>
+          Soil Type:
+          <select [(ngModel)]="form.soil_type" name="soilType">
+            <option value="">--Select Soil Type--</option>
+            <option value="Loamy">Loamy</option>
+            <option value="Sandy">Sandy</option>
+            <option value="Clay">Clay</option>
+          </select>
+        </label>
 
-      <label>
-        Time Season:
-        <select [(ngModel)]="form.season" name="season">
-          <option value="">--Select Season--</option>
-          <option value="Initial">Initial</option>
-          <option value="Mid-season">Mid-season</option>
-          <option value="Late-season">Late-season</option>
-        </select>
-      </label>
+        <label>
+          Time Season:
+          <select [(ngModel)]="form.season" name="season">
+            <option value="">--Select Season--</option>
+            <option value="Initial">Initial</option>
+            <option value="Mid-season">Mid-season</option>
+            <option value="Late-season">Late-season</option>
+          </select>
+        </label>
 
-      <label>
-        Area (m²):
-        <input type="number" [(ngModel)]="form.area" name="area" />
-      </label>
+        <label>
+          Area (m²):
+          <input type="number" [(ngModel)]="form.area" name="area" />
+        </label>
 
-      <label>
-        Initial Soil Moisture Level (Liter/m²):
-        <input
-          type="number"
-          [(ngModel)]="form.initial_moisture"
-          name="initialMoisture"
-        />
-      </label>
+        <label>
+          Initial Soil Moisture Level (Liter/m²):
+          <input
+            type="number"
+            [(ngModel)]="form.initial_moisture"
+            name="initialMoisture"
+          />
+        </label>
 
-      <label>
-        Max Soil Moisture Level (Liter/m²):
-        <input
-          type="number"
-          [(ngModel)]="form.max_moisture"
-          name="maxMoisture"
-        />
-      </label>
-    </div>
-
-    <div class="error" *ngIf="errorMessage" style="color: red;">
-      {{ errorMessage }}
-    </div>
-
-    <div class="button-group">
-      <div class="model-button">
-        <ng-container *ngIf="!modelsLoading['DNN']; else dnnSpinner">
-          <button (click)="runModel('DNN')">Deep Neural Network</button>
-          <p *ngIf="results.DNN">{{ results.DNN }} Liters</p>
-          <p *ngIf="results.DNN_accuracy">{{ results.DNN_accuracy }} %</p>
-        </ng-container>
-        <ng-template #dnnSpinner>
-          <div class="spinner"></div>
-        </ng-template>
+        <label>
+          Max Soil Moisture Level (Liter/m²):
+          <input
+            type="number"
+            [(ngModel)]="form.max_moisture"
+            name="maxMoisture"
+          />
+        </label>
       </div>
 
-      <div class="model-button">
-        <ng-container *ngIf="!modelsLoading['DT']; else dtSpinner">
-          <button (click)="runModel('DT')">Decision Tree</button>
-          <p *ngIf="results.DT">{{ results.DT }} Liters</p>
-          <p *ngIf="results.DT_accuracy">{{ results.DT_accuracy }} %</p>
-        </ng-container>
-        <ng-template #dtSpinner>
-          <div class="spinner"></div>
-        </ng-template>
+      <div class="error" *ngIf="errorMessage" style="color: red;">
+        {{ errorMessage }}
       </div>
 
-      <div class="model-button">
-        <ng-container *ngIf="!modelsLoading['RF']; else rfSpinner">
-          <button (click)="runModel('RF')">Random Forest</button>
-          <p *ngIf="results.RF">{{ results.RF }} Liters</p>
-          <p *ngIf="results.RF_accuracy">{{ results.RF_accuracy }} %</p>
-        </ng-container>
-        <ng-template #rfSpinner>
-          <div class="spinner"></div>
-        </ng-template>
-      </div>
-
-      <div class="sarimax-button">
-        <ng-container>
-          <button 
-        disabled 
-        title="SARIMAX model is currently unavailable, it's 400MB, which is not available in free plan."
-          >
-        SARIMAX
-          </button>
-          <p *ngIf="results.SARIMAX">{{ results.SARIMAX }} Liters</p>
-          <p *ngIf="results.SARIMAX_accuracy">
-        {{ results.SARIMAX_accuracy }} %
-          </p>
-        </ng-container>
-      </div>
-
-      <div class="model-button">
-        <ng-container *ngIf="!modelsLoading['SVM']; else svmSpinner">
-          <button (click)="runModel('SVM')">SVM</button>
-          <p *ngIf="results.SVM">{{ results.SVM }} Liters</p>
-          <p *ngIf="results.SVM_accuracy">{{ results.SVM_accuracy }} %</p>
-        </ng-container>
-        <ng-template #svmSpinner>
-          <div class="spinner"></div>
-        </ng-template>
-      </div>
-
-      <div class="model-button">
-        <ng-container *ngIf="!modelsLoading['XGBoost']; else xgboostSpinner">
-          <button (click)="runModel('XGBoost')">XGBoost</button>
-          <p *ngIf="results.XGBoost">{{ results.XGBoost }} Liters</p>
-          <p *ngIf="results.XGBoost_accuracy">
-            {{ results.XGBoost_accuracy }} %
-          </p>
-        </ng-container>
-        <ng-template #xgboostSpinner>
-          <div class="spinner"></div>
-        </ng-template>
-      </div>
+      <div class="button-group">
         <div class="model-button">
-          <ng-container *ngIf="!modelsLoading['actual']; else actualSpinner">
-            <button (click)="runModel('actual')">Actual Result</button>
-            <p *ngIf="results.actual">{{ results.actual }} Liters</p>
+          <ng-container *ngIf="!modelsLoading['DNN']; else dnnSpinner">
+            <button (click)="runModel('DNN')">Deep Neural Network</button>
+            <p *ngIf="results.DNN">{{ results.DNN }} Liters</p>
+            <p *ngIf="results.DNN_accuracy">{{ results.DNN_accuracy }} %</p>
           </ng-container>
-          <ng-template #actualSpinner>
+          <ng-template #dnnSpinner>
             <div class="spinner"></div>
           </ng-template>
         </div>
+
+        <div class="model-button">
+          <ng-container *ngIf="!modelsLoading['DT']; else dtSpinner">
+            <button (click)="runModel('DT')">Decision Tree</button>
+            <p *ngIf="results.DT">{{ results.DT }} Liters</p>
+            <p *ngIf="results.DT_accuracy">{{ results.DT_accuracy }} %</p>
+          </ng-container>
+          <ng-template #dtSpinner>
+            <div class="spinner"></div>
+          </ng-template>
+        </div>
+
+        <div class="model-button">
+          <ng-container *ngIf="!modelsLoading['RF']; else rfSpinner">
+            <button (click)="runModel('RF')">Random Forest</button>
+            <p *ngIf="results.RF">{{ results.RF }} Liters</p>
+            <p *ngIf="results.RF_accuracy">{{ results.RF_accuracy }} %</p>
+          </ng-container>
+          <ng-template #rfSpinner>
+            <div class="spinner"></div>
+          </ng-template>
+        </div>
+
+        <div class="sarimax-button">
+          <ng-container>
+            <button 
+          disabled 
+          title="SARIMAX model is currently unavailable, it's 400MB, which is not available in free plan."
+            >
+          SARIMAX
+            </button>
+            <p *ngIf="results.SARIMAX">{{ results.SARIMAX }} Liters</p>
+            <p *ngIf="results.SARIMAX_accuracy">
+          {{ results.SARIMAX_accuracy }} %
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="model-button">
+          <ng-container *ngIf="!modelsLoading['SVM']; else svmSpinner">
+            <button (click)="runModel('SVM')">SVM</button>
+            <p *ngIf="results.SVM">{{ results.SVM }} Liters</p>
+            <p *ngIf="results.SVM_accuracy">{{ results.SVM_accuracy }} %</p>
+          </ng-container>
+          <ng-template #svmSpinner>
+            <div class="spinner"></div>
+          </ng-template>
+        </div>
+
+        <div class="model-button">
+          <ng-container *ngIf="!modelsLoading['XGBoost']; else xgboostSpinner">
+            <button (click)="runModel('XGBoost')">XGBoost</button>
+            <p *ngIf="results.XGBoost">{{ results.XGBoost }} Liters</p>
+            <p *ngIf="results.XGBoost_accuracy">
+              {{ results.XGBoost_accuracy }} %
+            </p>
+          </ng-container>
+          <ng-template #xgboostSpinner>
+            <div class="spinner"></div>
+          </ng-template>
+        </div>
+          <div class="model-button">
+            <ng-container *ngIf="!modelsLoading['actual']; else actualSpinner">
+              <button (click)="runModel('actual')">Actual Result</button>
+              <p *ngIf="results.actual">{{ results.actual }} Liters</p>
+            </ng-container>
+            <ng-template #actualSpinner>
+              <div class="spinner"></div>
+            </ng-template>
+          </div>
+      </div>
+    </form>
+  </div>
+  <!-- Floating AI Assistant Button -->
+<button
+  class="ai-assistant-btn"
+  (click)="showAssistant = !showAssistant"
+  aria-label="Open AI Assistant"
+>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+</svg>
+</button>
+
+<!-- AI Assistant Chat Component -->
+<div
+  class="ai-assistant-chat"
+  *ngIf="showAssistant"
+>
+  <!-- Paste your chat component HTML here -->
+  <!-- From Uiverse.io by Cybercom682 --> 
+  <div
+    class="max-w-md mx-auto bg-white dark:bg-zinc-800 shadow-md rounded-lg overflow-hidden"
+  >
+    <div class="flex flex-col h-[400px]">
+      <div class="px-4 py-3 border-b dark:border-zinc-700">
+        <div class="flex justify-between items-center">
+          <h2 class="text-lg font-semibold text-zinc-800 dark:text-white">
+            Chatbot Assistant
+          </h2>
+          <div class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+            Online
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex-1 p-3 overflow-y-auto flex flex-col space-y-2"
+        id="chatDisplay"
+      >
+        <div
+          class="chat-message self-end bg-blue-500 text-white max-w-xs rounded-lg px-3 py-1.5 text-sm"
+        >
+          Hello! How can I assist you today?
+        </div>
+        <div
+          class="chat-message self-start bg-zinc-500 text-white max-w-xs rounded-lg px-3 py-1.5 text-sm"
+        >
+          Hello! I need a Chatbot!
+        </div>
+      </div>
+      <div class="px-3 py-2 border-t dark:border-zinc-700">
+        <div class="flex gap-2">
+          <input
+            placeholder="Type your message..."
+            class="flex-1 p-2 border rounded-lg dark:bg-zinc-700 dark:text-white dark:border-zinc-600 text-sm"
+            id="chatInput"
+            type="text"
+          />
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-lg transition duration-300 ease-in-out text-sm"
+            id="sendButton"
+          >
+            Send
+          </button>
+        </div>
+      </div>
     </div>
-  </form>
+  </div>
+</div>
 </div>

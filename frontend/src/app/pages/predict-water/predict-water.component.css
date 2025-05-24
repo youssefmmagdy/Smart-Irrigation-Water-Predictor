@@ -97,7 +97,40 @@
   background-color: #ffffff;
   color: #06202B;
 }
+.ai-assistant-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ai-assistant-btn:hover {
+  background: #1d4ed8;
+}
+.ai-assistant-btn .material-icons {
+  font-size: 32px;
+}
 
+.ai-assistant-chat {
+  position: fixed;
+  bottom: 100px;
+  right: 32px;
+  z-index: 1001;
+  max-width: 350px;
+  width: 100%;
+}
 .spinner {
   width: 130px;
   height: 50px;

@@ -11,7 +11,7 @@ from llama_index.core.node_parser import SentenceSplitter
 load_dotenv()
 google_api_key = os.getenv("GOOGLE_API_KEY")
 
-documents = SimpleDirectoryReader('./data').load_data()
+documents = SimpleDirectoryReader('api/data').load_data()
 model = GoogleGenAI(model='gemini-2.5-flash-preview-05-20', api_key=google_api_key)
 model_embedding = GoogleGenAIEmbedding(model_name='text-embedding-004')
 

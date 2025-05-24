@@ -16,6 +16,7 @@ import { NONE_TYPE } from '@angular/compiler';
 })
 export class PredictWaterComponent implements OnInit {
   triedSubmit = false;
+  showAssistant = false;
   errorMessage: string | null = null;
 
   // Tracks loading status for each model
