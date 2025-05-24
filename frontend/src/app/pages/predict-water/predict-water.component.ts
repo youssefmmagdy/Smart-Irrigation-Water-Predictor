@@ -34,7 +34,15 @@ export class PredictWaterComponent implements OnInit {
       this.showAssistant = false;
     }
   }
-
+  
+  @ViewChild('chatScroll') chatScroll!: ElementRef;
+  scrollToBottom() {
+    setTimeout(() => {
+      if (this.chatScroll && this.chatScroll.nativeElement) {
+        this.chatScroll.nativeElement.scrollTop = this.chatScroll.nativeElement.scrollHeight;
+      }
+    }, 0);
+  }
 
   // Tracks loading status for each model
   modelsLoading: Record<string, boolean> = {
@@ -133,18 +141,21 @@ export class PredictWaterComponent implements OnInit {
   }
 
   chatMessages: { sender: 'user' | 'assistant', text: string }[] = [
-  { sender: 'assistant', text: 'Hello! How can I assist you today?' }
+  { sender: 'assistant', text: 'Hello! How can I assist you today (Inside the thesis paper)?' }
 ];
 
   addMessage(text: string) {
     if (text && text.trim()) {
       this.chatMessages.push({ sender: 'user', text: text.trim() });
+      this.scrollToBottom();
+
     }
   }
 
   addResponse(text: string) {
     if (text && text.trim()) {
       this.chatMessages.push({ sender: 'assistant', text: text.trim() });
+      this.scrollToBottom();
     }
   }
 

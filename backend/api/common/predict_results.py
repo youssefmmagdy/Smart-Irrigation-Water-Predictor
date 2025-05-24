@@ -1,12 +1,12 @@
 # from common.load_models import load_xgb_model, load_rf_model, load_dt_model, load_svm_model, load_sarimax_model, load_dnn_model
-from services.actual_result import calculate_rain_contribution, calculate_crop_et
+from api.services.actual_result import calculate_rain_contribution, calculate_crop_et
+from api.common.test_case import get_test_case
 import numpy as np
-from common.test_case import get_test_case
 
 def get_water_predicted(model, test_case):
     
     test_case = get_test_case(test_case)
-    print("Test case:", test_case)
+
     if test_case is None:
         return None
     weather_feature_order = ['avgtemp_c', 'maxtemp_c', 'mintemp_c', 'avgwind_kph', 'avghumidity', 'totalprecip_mm', 'sunHour']
