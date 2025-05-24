@@ -21,7 +21,8 @@ export class ApiService {
     return this.http.post<any>(`${this.baseUrl}/predict/${modelId}`, data);
   }
 
-  askOllama(question: string): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/ask-ollama`, { question });
+  askGemini(question: string): Observable<any> {
+    console.log('Asking Gemini:', question);
+    return this.http.post<any>(`${this.baseUrl}/predict/ask-gemini`, { query: question });
   }
 }

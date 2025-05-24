@@ -1,10 +1,11 @@
 //// filepath: c:\Users\Yusuf\Documents\Bachelor\Code\frontend\Bachelor\src\app\pages\predict-water\predict-water.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from '../../api/api.service';
 import { NONE_TYPE } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-predict-water',
@@ -16,8 +17,24 @@ import { NONE_TYPE } from '@angular/compiler';
 })
 export class PredictWaterComponent implements OnInit {
   triedSubmit = false;
-  showAssistant = false;
   errorMessage: string | null = null;
+  message: string | null = null;
+  aiLoading = false;
+  
+  showAssistant = false;
+  @ViewChild('chatBox') chatBox!: ElementRef;
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (
+      this.showAssistant &&
+      this.chatBox &&
+      !this.chatBox.nativeElement.contains(event.target)
+    ) {
+      this.showAssistant = false;
+    }
+  }
+
 
   // Tracks loading status for each model
   modelsLoading: Record<string, boolean> = {
@@ -115,6 +132,41 @@ export class PredictWaterComponent implements OnInit {
     );
   }
 
+  chatMessages: { sender: 'user' | 'assistant', text: string }[] = [
+  { sender: 'assistant', text: 'Hello! How can I assist you today?' }
+];
+
+  addMessage(text: string) {
+    if (text && text.trim()) {
+      this.chatMessages.push({ sender: 'user', text: text.trim() });
+    }
+  }
+
+  addResponse(text: string) {
+    if (text && text.trim()) {
+      this.chatMessages.push({ sender: 'assistant', text: text.trim() });
+    }
+  }
+
+  sendMessage() {
+    if (!this.message || !this.message.trim()) return;
+    this.addMessage(this.message);
+    const userMessage = this.message;
+    this.message = ''; // Clear the input after sending
+    this.aiLoading = true;
+
+    this.api.askGemini(userMessage).subscribe({
+      next: (response) => {
+        this.addResponse(response.response);
+        this.aiLoading = false;
+      },
+      error: () => {
+        this.addResponse('Error communicating with Gemini.');
+        this.aiLoading = false;
+      },
+    });
+  }
+
   runModel(model: string) {
     this.triedSubmit = true;
     if (!this.isValid()) {
@@ -165,5 +217,7 @@ export class PredictWaterComponent implements OnInit {
       },
 
     });
+
+    
   }
 }

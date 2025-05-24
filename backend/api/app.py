@@ -37,6 +37,10 @@ def get_all_models():
 def read_root():
     return jsonify({"Hello": "World"})
 
+@app.route("/hey", methods=["GET"])
+def read_root1():
+    return jsonify({"Hello": "World"})
+
 @app.route("/load/<model_id>", methods=["POST"])
 def load_model(model_id):
     model_id = model_id.lower()
@@ -116,4 +120,3 @@ def ask_gemini_route():
     response = ask_gemini(input_query)
     
     return jsonify({"response": response})
-

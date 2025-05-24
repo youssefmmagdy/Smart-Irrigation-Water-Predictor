@@ -104,7 +104,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #2563eb;
+  background: #077A7D;
   color: #fff;
   border: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -116,8 +116,25 @@
   cursor: pointer;
   transition: background 0.2s;
 }
+
+.dot-flashing {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #fff;
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: .5s;
+  margin-right: 6px;
+}
+@keyframes dotFlashing {
+  0% { background-color: #fff; }
+  50%, 100% { background-color: #bbb; }
+}
+
 .ai-assistant-btn:hover {
-  background: #1d4ed8;
+  background: #056063;
 }
 .ai-assistant-btn .material-icons {
   font-size: 32px;
