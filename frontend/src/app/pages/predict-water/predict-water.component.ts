@@ -152,6 +152,27 @@ export class PredictWaterComponent implements OnInit {
     }
   }
 
+  streamResponse(text: string) {
+    if (!text || !text.trim()) return;
+    let current = '';
+    this.chatMessages.push({ sender: 'assistant', text: '' });
+    this.scrollToBottom();
+    const words = text.split(' ');
+    let i = 0;
+
+    const stream = () => {
+      if (i < words.length) {
+        current += (i === 0 ? '' : ' ') + words[i];
+        this.chatMessages[this.chatMessages.length - 1].text = current;
+        this.scrollToBottom();
+        i++;
+        setTimeout(stream, 40); // Adjust speed as needed
+      } else {
+        this.aiLoading = false;
+      }
+    };
+    stream();
+  }
   addResponse(text: string) {
     if (text && text.trim()) {
       this.chatMessages.push({ sender: 'assistant', text: text.trim() });
@@ -163,13 +184,12 @@ export class PredictWaterComponent implements OnInit {
     if (!this.message || !this.message.trim()) return;
     this.addMessage(this.message);
     const userMessage = this.message;
-    this.message = ''; // Clear the input after sending
+    this.message = '';
     this.aiLoading = true;
 
     this.api.askGemini(userMessage).subscribe({
-      next: (response) => {
-        this.addResponse(response.response);
-        this.aiLoading = false;
+      next: (response: string) => {
+        this.streamResponse(response);
       },
       error: () => {
         this.addResponse('Error communicating with Gemini.');
@@ -222,6 +242,7 @@ export class PredictWaterComponent implements OnInit {
       },
       error: () => {
         this.errorMessage = 'An error occurred.';
+        this.modelsLoading[model] = false;
       },
       complete: () => {
         this.modelsLoading[model] = false;

@@ -95,9 +95,13 @@
             </ng-template>
           </div>
 
-          <div class="model-button">
+          <div class="sarimax-button"
+          disabled
+
+                title="RF model is currently unavailable, it's too large to be loaded in the free plan."
+          >
             <ng-container *ngIf="!modelsLoading['RF']; else rfSpinner">
-              <button (click)="runModel('RF')">Random Forest</button>
+              <button>Random Forest</button>
               <p *ngIf="results.RF">{{ results.RF }} Liters</p>
               <p *ngIf="results.RF_accuracy">{{ results.RF_accuracy }} %</p>
             </ng-container>
@@ -105,13 +109,27 @@
               <div class="spinner"></div>
             </ng-template>
           </div>
+          <div class="sarimax-button"
+          disabled
+                title="SARIMAX model is currently unavailable, it's too large to be loaded in the free plan."
+          >
+            <ng-container *ngIf="!modelsLoading['SARIMAX']; else sarimaxSpinner">
+              <button>SARIMAX</button>
+              <p *ngIf="results.SARIMAX">{{ results.SARIMAX }} Liters</p>
+              <p *ngIf="results.SARIMAX_accuracy">{{ results.SARIMAX_accuracy }} %</p>
+            </ng-container>
+            <ng-template #sarimaxSpinner>
+              <div class="spinner"></div>
+            </ng-template>
+          </div>
 
-          <div class="sarimax-button">
+          <!-- <div class="sarimax-button">
             <ng-container>
               <button
                 disabled
                 title="SARIMAX model is currently unavailable, it's 400MB, which is not available in free plan."
-              >
+              
+                >
                 SARIMAX
               </button>
               <p *ngIf="results.SARIMAX">{{ results.SARIMAX }} Liters</p>
@@ -119,7 +137,7 @@
                 {{ results.SARIMAX_accuracy }} %
               </p>
             </ng-container>
-          </div>
+          </div> -->
 
           <div class="model-button">
             <ng-container *ngIf="!modelsLoading['SVM']; else svmSpinner">

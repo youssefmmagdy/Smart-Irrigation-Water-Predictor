@@ -107,7 +107,7 @@ def predict(model_id):
         return jsonify({"amount": float(x)})
     else:
         return jsonify({"error": f"Model '{model_id}' is not supported"}), 400
-    
+ 
 @app.route("/predict/ask-gemini", methods=["POST"])
 def ask_gemini_route():
     data = request.get_json()
@@ -115,8 +115,15 @@ def ask_gemini_route():
     
     if not input_query:
         return jsonify({"error": "No query provided"}), 400
-    
-    # Call the gemini function here
-    response = ask_gemini(input_query)
-    
-    return jsonify({"response": response})
+
+    def generate():
+        response = ask_gemini(input_query)
+        print("Gemini response:", response)  # Debug print
+        # Simulate streaming word by word
+        for word in response.split():
+            yield word + ' '
+            import time; time.sleep(0.05)  # Optional: slow down for effect
+
+    return Response(generate(), mimetype='text/plain')
+
+

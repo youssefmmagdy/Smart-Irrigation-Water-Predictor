@@ -1,7 +1,7 @@
 # from common.load_models import load_xgb_model, load_rf_model, load_dt_model, load_svm_model, load_sarimax_model, load_dnn_model
+import numpy as np
 from api.services.actual_result import calculate_rain_contribution, calculate_crop_et
 from api.common.test_case import get_test_case
-import numpy as np
 
 def get_water_predicted(model, test_case):
     
