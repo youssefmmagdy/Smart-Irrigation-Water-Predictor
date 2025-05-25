@@ -34,7 +34,7 @@ def get_all_models():
     })
 
 @app.route("/", methods=["GET"])
-def read_root():
+def home():
     return jsonify({"Hello": "World"})
 
 @app.route("/hey", methods=["GET"])
@@ -126,5 +126,6 @@ def ask_gemini_route():
 
     return Response(generate(), mimetype='text/plain')
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+
+def handler(environ, start_response):
+    return app.wsgi_app(environ, start_response)
