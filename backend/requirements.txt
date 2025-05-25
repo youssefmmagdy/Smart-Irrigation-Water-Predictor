@@ -1,8 +1,6 @@
 Flask==3.0.3
 flask_cors
 numpy
-gunicorn
-uvicorn
 scikit-learn
 tensorflow==2.19.0
 joblib

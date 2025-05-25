@@ -1,6 +1,6 @@
-from api.common.predict_results import get_water_predicted
-from api.common.load_models import load_svm_model
-from api.common.load_models import load_svm_model
+from common.predict_results import get_water_predicted
+from common.load_models import load_svm_model
+from common.load_models import load_svm_model
 class SVMModelService:
     def __init__(self):
         self.model = None

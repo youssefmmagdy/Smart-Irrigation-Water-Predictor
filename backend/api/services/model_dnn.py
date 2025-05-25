@@ -1,6 +1,6 @@
-from api.common.load_models import load_dnn_model
-from api.common.predict_results import get_water_predicted
-from api.common.load_models import load_dnn_model
+from common.load_models import load_dnn_model
+from common.predict_results import get_water_predicted
+from common.load_models import load_dnn_model
 
 class DNNModelService:
     def __init__(self):

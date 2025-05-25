@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from api.services.model_dnn import DNNModelService
-from api.services.model_dt import DTModelService
-from api.services.model_rf import RFModelService
-from api.services.model_xgboost import XGBoostModelService
-from api.services.model_sarimax import SARIMAXModelService
-from api.services.model_svm import SVMModelService
-from api.services.actual_result import ActualResultService
-from api.gemini.gemini import ask_gemini
+from services.model_dnn import DNNModelService
+from services.model_dt import DTModelService
+from services.model_rf import RFModelService
+from services.model_xgboost import XGBoostModelService
+from services.model_sarimax import SARIMAXModelService
+from services.model_svm import SVMModelService
+from services.actual_result import ActualResultService
+from gemini.gemini import ask_gemini
 from flask import Response
 
 app = Flask(__name__)
@@ -126,4 +126,5 @@ def ask_gemini_route():
 
     return Response(generate(), mimetype='text/plain')
 
-
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)

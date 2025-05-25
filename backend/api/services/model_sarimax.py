@@ -1,6 +1,6 @@
-from api.common.load_models import load_sarimax_model
-from api.common.load_models import load_sarimax_model
-from api.common.predict_results import get_sarimax_water_predicted
+from common.load_models import load_sarimax_model
+from common.load_models import load_sarimax_model
+from common.predict_results import get_sarimax_water_predicted
 class SARIMAXModelService:
     def __init__(self):
         self.model = None

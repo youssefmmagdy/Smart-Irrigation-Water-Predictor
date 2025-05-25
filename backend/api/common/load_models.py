@@ -11,7 +11,6 @@ import requests
 
 load_dotenv()
 MONGODB_URI = os.getenv('MONGODB_URI')
-print(f"hey MONGODB_URI: {MONGODB_URI}")
 # Connect to MongoDB
 client = MongoClient(MONGODB_URI,
     tls=True,

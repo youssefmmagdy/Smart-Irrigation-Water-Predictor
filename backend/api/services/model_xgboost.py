@@ -1,6 +1,6 @@
-from api.common.load_models import load_xgb_model
-from api.common.predict_results import get_water_predicted
-from api.common.load_models import load_xgb_model
+from common.load_models import load_xgb_model
+from common.predict_results import get_water_predicted
+from common.load_models import load_xgb_model
 
 class XGBoostModelService:
     def __init__(self):
